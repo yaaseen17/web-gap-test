@@ -312,6 +312,7 @@ body {
   top: 25%;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  width: 100%;
 }
 .next-btn-left {
   border: none;
