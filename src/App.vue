@@ -2,7 +2,10 @@
   <div class="background">
     <img src="./assets/background.png" alt="" />
   </div>
-  <div class="logo">Autonomy Capital</div>
+  <div class="logo">
+    Autonomy <br />
+    Capital
+  </div>
   <div id="menuToggle">
     <input type="checkbox" />
 
@@ -171,9 +174,9 @@ body {
   left: 80px;
   font-size: 25px;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Courier New", Courier, monospace;
   font-weight: 50;
+  text-align: start;
 }
 #menuToggle input {
   display: block;
