@@ -59,12 +59,14 @@
             @click="setActive((active = index))"
           ></button>
         </div>
+
         <button
           class="next-btn-left"
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="prev"
           @click="setActive(active - 1)"
+          v-if="active !== 0"
         >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
@@ -75,6 +77,7 @@
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="next"
+          v-if="active !== total"
         >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
@@ -128,6 +131,11 @@ export default {
       else if (index === -1) active = this.SlideContents.length - 1;
 
       this.active = active;
+    },
+  },
+  computed: {
+    total() {
+      return this.SlideContents.length - 1;
     },
   },
 };
@@ -273,8 +281,10 @@ body {
 }
 .carousel-indicators {
   width: fit-content;
-  position: relative !important;
   margin: 0% !important;
+  left: 60%;
+  top: 70%;
+  height: fit-content;
 }
 .carousel-indicators .indicator-btn {
   right: 0;
@@ -309,27 +319,27 @@ body {
 }
 .layout {
   position: absolute;
-  top: 25%;
+  top: 35%;
   display: grid;
   grid-template-columns: 1fr 2fr;
   width: 100%;
 }
+
 .next-btn-left {
+  position: absolute;
+  top: 80%;
+  left: 50%;
   border: none;
   background-color: transparent;
-  position: sticky;
-  top: 80%;
-  left: 60%;
+  color: #507ad5 !important;
 }
-.next-btn-left span {
-  color: #507ad5;
-}
+
 .next-btn-right {
+  position: absolute;
+  top: 80%;
+  left: 70%;
   border: none;
   background-color: transparent;
-  position: sticky;
-  top: 80%;
-  left: 85%;
 }
 .carousel-control-prev-icon {
   width: 25px;
