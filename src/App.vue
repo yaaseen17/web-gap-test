@@ -391,10 +391,14 @@ body {
   }
   .head-text h2 {
     font-size: 50px;
+    padding-top: 30px;
   }
   .head-text p {
     padding-top: 20px;
     font-size: 18px;
+  }
+  .logo {
+    position: absolute;
   }
 }
 @media screen and (max-width: 680px) {
