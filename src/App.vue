@@ -2,7 +2,7 @@
   <div class="background">
     <img src="./assets/background.png" alt="" />
   </div>
-
+  <div class="logo">Autonomy Capital</div>
   <div id="menuToggle">
     <input type="checkbox" />
 
@@ -68,8 +68,7 @@
           @click="setActive(active - 1)"
           v-if="active !== 0"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <i class="carousel-control-prev-icon blue" aria-hidden="true"></i>
         </button>
         <button
           class="next-btn-right"
@@ -152,6 +151,9 @@ export default {
 body {
   overflow-x: hidden;
 }
+.blue {
+  color: blue;
+}
 #menuToggle {
   display: block;
   position: fixed;
@@ -163,6 +165,16 @@ body {
   -webkit-user-select: none;
   user-select: none;
 }
+.logo {
+  position: fixed;
+  top: 50px;
+  left: 80px;
+  font-size: 25px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 50;
+}
 #menuToggle input {
   display: block;
   width: 40px;
@@ -173,15 +185,12 @@ body {
 
   cursor: pointer;
 
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0;
+  z-index: 2;
 
   -webkit-touchallout: none;
 }
 
-/*
- * Just a quick hamburger
- */
 #menuToggle span {
   display: block;
   width: 30px;
@@ -207,35 +216,21 @@ body {
   transform-origin: 0% 100%;
 }
 
-/*
- * Transform all the slices of hamburger
- * into a crossmark.
- */
 #menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: #5d8fff;
 }
 
-/*
- * But let's hide the middle one.
- */
 #menuToggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
 #menuToggle input:checked ~ span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, -1px);
 }
 
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
 .background img {
   position: fixed;
   top: 0;
@@ -270,7 +265,6 @@ body {
   width: 50%;
   height: 100%;
   z-index: -1;
-  /* background-image: url(./assets/background.png); */
   background-color: #262b38;
 }
 .bi-chevron-left {
@@ -309,7 +303,7 @@ body {
 .head-text p {
   color: white;
   font-family: "Anek Latin", sans-serif;
-  padding-top: 80px;
+  padding-top: 55px;
   font-size: 15px;
 }
 .head-text h2 {
@@ -358,10 +352,74 @@ body {
   font-size: 12px;
 }
 .carousel-item img {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
   background-color: white;
   padding: 30px;
+  box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Media queries */
+@media screen and (max-width: 900px) {
+  .layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 15%;
+  }
+  .background {
+    width: 100%;
+  }
+  .carousel {
+    margin-top: 50px;
+  }
+  .background img {
+    width: 100%;
+  }
+  .carousel-item img {
+    margin-right: 40px;
+    margin-left: 20px;
+  }
+  .carousel-item p {
+    color: white;
+  }
+  .head-text {
+    width: 400px;
+  }
+  .head-text h2 {
+    font-size: 50px;
+  }
+  .head-text p {
+    padding-top: 20px;
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .carousel-align {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .carousel {
+    width: 400px;
+  }
+  .txt-desc {
+    text-align: center;
+    padding-top: 60px;
+  }
+  .head-text {
+    padding-left: 60px;
+  }
+  .carousel-indicators {
+    top: 45%;
+    left: 45%;
+  }
+  .next-btn-left {
+    top: 45%;
+    left: 22%;
+  }
+  .next-btn-right {
+    top: 45%;
+  }
 }
 </style>
