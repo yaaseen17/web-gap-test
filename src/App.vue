@@ -1,5 +1,8 @@
 <template>
-  <div class="background"></div>
+  <div class="background">
+    <img src="./assets/background.png" alt="" />
+  </div>
+
   <div id="menuToggle">
     <input type="checkbox" />
 
@@ -13,10 +16,10 @@
     <div class="head-text item1">
       <h2>Leadership</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-        explicabo, veniam similique corrupti earum excepturi blanditiis quae
-        repellendus iste alias reprehenderit distinctio aliquam, at nisi est
-        ipsa labore et minima?
+        We believe the successful management of macro investment strategies
+        requires strong leadership guided by values that not only safeguard the
+        best interests of our partners, but also empower our people to deliver
+        exceptional results.
       </p>
     </div>
     <div
@@ -25,77 +28,35 @@
       data-bs-ride="carousel"
     >
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000">
+        <div
+          class="carousel-item"
+          v-for="(SlideContent, index) in SlideContents"
+          :key="'SlideContent-' + SlideContent.id"
+          :class="{ 'carousel-item': true, active: index === active }"
+        >
           <div class="carousel-align">
             <div>
-              <img src="https://picsum.photos/id/100/600/200" />
+              <img :src="SlideContent.img" alt="jjjj" />
             </div>
-            <div>
-              <h5>First slide label</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                totam dicta at esse ipsum sapiente eligendi, beatae, tenetur et
-                unde aspernatur odio, molestiae atque? Quam a velit accusamus
-                sed deleniti!
-              </p>
-              <p class="name">Ivan Ritossa</p>
+            <div class="txt-desc">
+              <h5>{{ SlideContent.name }}</h5>
+              <h6>{{ SlideContent.position }}</h6>
+              <p>{{ SlideContent.description }}</p>
+              <p>{{ SlideContent.description2 }}</p>
             </div>
           </div>
         </div>
-        <div class="carousel-item" data-bs-interval="2000">
-          <div class="carousel-align">
-            <div>
-              <img src="https://picsum.photos/id/121/600/200" />
-            </div>
-            <div>
-              <h5>Second slide label</h5>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad eos
-                unde porro neque sequi iusto pariatur veritatis iste, alias
-                necessitatibus similique repellendus qui temporibus adipisci
-                odio, veniam maxime, molestias sed.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="carousel-align">
-            <div>
-              <img src="https://picsum.photos/id/125/600/200" alt="..." />
-            </div>
-            <div>
-              <h5>Third slide label</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corporis velit necessitatibus voluptatum iste provident ab,
-                suscipit facere voluptatem? Repellat eligendi optio quia quo
-                repellendus eos placeat cumque omnis debitis facilis!
-              </p>
-            </div>
-          </div>
-        </div>
+
         <div class="carousel-indicators">
           <button
             type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide-to="0"
-            class="active indicator-btn"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
             class="indicator-btn"
+            v-for="(SlideContent, index) in SlideContents"
+            :key="'SlideContent-' + SlideContent.id"
+            :class="{ active: index === active }"
             data-bs-target="#carouselExampleDark"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            class="indicator-btn"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
+            :data-bs-slide-to="index"
+            @click="setActive((active = index))"
           ></button>
         </div>
         <button
@@ -103,12 +64,14 @@
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="prev"
+          @click="setActive(active - 1)"
         >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
         <button
           class="next-btn-right"
+          @click="setActive(active + 1)"
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="next"
@@ -125,17 +88,61 @@
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      SlideContents: [
+        {
+          img: require("./assets/Guy2.png"),
+          name: "Robert Gibbons",
+          position: "Partner, Founder and Chief Investment Officer",
+          description:
+            "For over 25 years, Robert Gibbins has applied his fascination with the development and transition of economies and societiesto the management of global macro investment strategies  adistinctive focus that has personified Autonomy since its inception.",
+          description2:
+            " After earning a BS in Economics from the Wharton School at the University of Pennsylvania, Robert began his career at JP Morgan in 1992. He subsequently traded northern European FX and interest rates at Lehman Brothers for two years, followed by seven years as head of emerging markets and global macro proprietary trading.",
+        },
+        {
+          name: "Ivan Ritossa",
+          img: require("./assets/Guy1.png"),
+          position: "Chief Executive Officer",
+          description:
+            "Ivan has over 35 years of experience in the global financial services industry, building a rich diversity of businesses. He was previously an MD and a member of the executive committee at Barclays Capital, MD at Lehman Brothers, and a partner and senior MD at Bankers Trust. ",
+          description2:
+            "Ivan earned a Bachelor of Commerce (honors) degree, majoring in Finance, from the University of New South Wales, Australia. He has served on the New York Federal Reserve Foreign Exchange Committee, the Bank of England Foreign Exchange Joint Standing Committee, and the Singapore Foreign Exchange Markets Committee.",
+        },
+        {
+          name: "James Bond",
+          img: require("./assets/avatar.jpg"),
+          position: "Position at institute",
+          description:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad eos unde porro neque sequi iusto pariatur veritatis iste, alias necessitatibus similique repellendus qui temporibus adipisci odio, veniam maxime, molestias sed. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui quisquam dolor, eum distinctio optio ex eius obcaecati nam non doloribus minima pariatur fugiat numquam ratione omnis, excepturi itaque delectus quas! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa ducimus, natus aspernatur animi accusamus commodi molestias explicabo perspiciatis rem corporis veniam architecto ipsum illum, eum sapiente atque necessitatibus! Aperiam, reiciendis.",
+          description2: "",
+        },
+      ],
+      active: 0,
+    };
+  },
+  methods: {
+    setActive(index) {
+      let active = index;
+
+      if (index === this.SlideContents.length) active = 0;
+      else if (index === -1) active = this.SlideContents.length - 1;
+
+      this.active = active;
+    },
   },
 };
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100&family=Bitter:wght@300&family=Inconsolata:wght@300&family=Karma:wght@300&display=swap");
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+body {
+  overflow-x: hidden;
 }
 #menuToggle {
   display: block;
@@ -161,7 +168,7 @@ export default {
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
 
-  -webkit-touch-callout: none;
+  -webkit-touchallout: none;
 }
 
 /*
@@ -169,8 +176,8 @@ export default {
  */
 #menuToggle span {
   display: block;
-  width: 33px;
-  height: 4px;
+  width: 30px;
+  height: 3px;
   margin-bottom: 5px;
   position: relative;
 
@@ -192,7 +199,7 @@ export default {
   transform-origin: 0% 100%;
 }
 
-/* 
+/*
  * Transform all the slices of hamburger
  * into a crossmark.
  */
@@ -221,6 +228,33 @@ export default {
  * Make this absolute positioned
  * at the top left of the screen
  */
+.background img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0.2;
+  object-fit: cover;
+}
+.txt-desc p {
+  font-size: 20px;
+  font-weight: 900;
+}
+.txt-desc h5 {
+  color: #507ad5;
+  font-weight: bolder;
+}
+.txt-desc h6 {
+  color: #507ad5;
+  font-weight: 700;
+}
+.txt-desc {
+  width: 300px;
+  height: 400px;
+  text-align: left;
+  font-family: "Anek Latin", sans-serif;
+}
 .background {
   position: fixed;
   top: 0;
@@ -228,11 +262,8 @@ export default {
   width: 50%;
   height: 100%;
   z-index: -1;
-  background-image: repeating-linear-gradient(
-    44deg,
-    rgb(0, 0, 0) 0px,
-    #242e40 150px
-  );
+  /* background-image: url(./assets/background.png); */
+  background-color: #262b38;
 }
 .bi-chevron-left {
   color: black;
@@ -241,12 +272,14 @@ export default {
   height: 100%;
 }
 .carousel-indicators {
-  left: 50%;
-  top: 65%;
+  width: fit-content;
+  position: relative !important;
+  margin: 0% !important;
 }
 .carousel-indicators .indicator-btn {
-  height: 15px;
-  width: 15px;
+  right: 0;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   background-color: #5d8fff !important;
 }
@@ -257,18 +290,26 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.carousel-align h5 {
-  color: #507ad5;
+
+.head-text {
+  width: 300px;
+  text-align: left;
+  padding-left: 80px;
 }
 .head-text p {
   color: white;
+  font-family: "Anek Latin", sans-serif;
+  padding-top: 80px;
+  font-size: 15px;
 }
 .head-text h2 {
   color: #507ad5;
-  font-weight: 50;
+  font-size: 40px;
+  font-family: "Anek Latin", sans-serif;
 }
 .layout {
-  margin-top: 25%;
+  position: absolute;
+  top: 25%;
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
@@ -279,6 +320,9 @@ export default {
   top: 80%;
   left: 60%;
 }
+.next-btn-left span {
+  color: #507ad5;
+}
 .next-btn-right {
   border: none;
   background-color: transparent;
@@ -288,20 +332,23 @@ export default {
 }
 .carousel-control-prev-icon {
   width: 25px;
-  height: 25px;
+  height: 18px;
 }
 .carousel-control-next-icon {
   width: 25px;
-  height: 25px;
+  height: 18px;
 }
 .name {
   position: absolute;
   left: 70%;
   top: 80%;
 }
-img {
-  height: 300px;
-  width: 300px;
+.carousel-item p {
+  font-size: 12px;
+}
+.carousel-item img {
+  height: 250px;
+  width: 250px;
   border-radius: 50%;
   background-color: white;
   padding: 30px;
