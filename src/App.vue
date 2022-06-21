@@ -137,11 +137,11 @@ export default {
             "Ivan earned a Bachelor of Commerce (honors) degree, majoring in Finance, from the University of New South Wales, Australia. He has served on the New York Federal Reserve Foreign Exchange Committee, the Bank of England Foreign Exchange Joint Standing Committee, and the Singapore Foreign Exchange Markets Committee.",
         },
         {
-          name: "James Bond",
+          name: "Sadat Mannan ",
           img: require("./assets/avatar.jpg"),
-          position: "Position at institute",
+          position: "Head of Treasury",
           description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad eos unde porro neque sequi iusto pariatur veritatis iste, alias necessitatibus similique repellendus qui temporibus adipisci odio, veniam maxime, molestias sed. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui quisquam dolor, eum distinctio optio ex eius obcaecati nam non doloribus minima pariatur fugiat numquam ratione omnis, excepturi itaque delectus quas! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa ducimus, natus aspernatur animi accusamus commodi molestias explicabo perspiciatis rem corporis veniam architecto ipsum illum, eum sapiente atque necessitatibus! Aperiam, reiciendis.",
+            "Sadat is tasked with optimising Autonomy’s treasury management and launching a relative value fund. He brings data-driven discipline and innovation to the firm, as well as a proven ability to identify market imbalances. Prior to joining Autonomy, Sadat was the global head of Barclay’s Delta-1 strategic derivatives business. ",
           description2: "",
         },
       ],
@@ -320,20 +320,21 @@ body {
 }
 
 .head-text {
-  width: 300px;
+  width: 350px;
   text-align: left;
   padding-left: 80px;
 }
 .head-text p {
   color: white;
   font-family: "Anek Latin", sans-serif;
-  padding-top: 55px;
+  padding-top: 65px;
   font-size: 15px;
 }
 .head-text h2 {
   color: #507ad5;
   font-size: 40px;
   font-family: "Anek Latin", sans-serif;
+  font-weight: bolder;
 }
 .layout {
   position: absolute;
