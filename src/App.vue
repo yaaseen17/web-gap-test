@@ -85,6 +85,7 @@
             />
           </svg>
         </button>
+
         <button
           class="next-btn-right"
           @click="setActive(active + 1)"
@@ -300,7 +301,7 @@ body {
 .carousel-indicators {
   width: fit-content;
   margin: 0% !important;
-  left: 60%;
+  left: 50%;
   top: 70%;
   height: fit-content;
 }
